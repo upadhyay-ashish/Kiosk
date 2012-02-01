@@ -1,0 +1,633 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xb588c59f, pid=5183, tid=3027237744
+#
+# JRE version: 6.0_23-b23
+# Java VM: OpenJDK Client VM (20.0-b11 mixed mode, sharing linux-x86 )
+# Derivative: IcedTea6 1.11pre
+# Distribution: Ubuntu 11.10, package 6b23~pre11-0ubuntu1.11.10.2
+# Problematic frame:
+# J  org.joni.Parser.parseExp(Lorg/joni/constants/TokenType;)Lorg/joni/ast/Node;
+#
+# If you would like to submit a bug report, please include
+# instructions how to reproduce the bug and visit:
+#   https://bugs.launchpad.net/ubuntu/+source/openjdk-6/
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0xb49f9c00):  JavaThread "RubyThread-0: /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/redcar-0.13/lib/redcar.rb:183" daemon [_thread_in_Java, id=5196, stack(0xb45ff000,0xb4700000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=128 (), si_addr=0x00000000
+
+Registers:
+EAX=0x00000018, EBX=0x0000000e, ECX=0x7bc3d5a0, EDX=0x00000000
+ESP=0xb46fa6b0, EBP=0xb46fa7f8, ESI=0x7bc3d640, EDI=0x824335c8
+EIP=0xb588c59f, EFLAGS=0x00010246, CR2=0xb77d4a80
+
+Top of Stack: (sp=0xb46fa6b0)
+0xb46fa6b0:   00000000 00000008 7bc3ba10 7bc3c830
+0xb46fa6c0:   b46fa6c0 90038cb8 b46fa6ec 9003d968
+0xb46fa6d0:   00000000 90038d58 b46fa834 b5799950
+0xb46fa6e0:   00000000 00000014 7bc3d640 7bc3d5a0
+0xb46fa6f0:   b46fa6f0 900365e0 82433638 00000000
+0xb46fa700:   823602e8 7bc3c830 b46fa834 b579c664
+0xb46fa710:   7bc3bc00 00000000 7bc3b9e0 b56b9e21
+0xb46fa720:   00000064 7bc3c830 b46fa728 9003bb8a 
+
+Instructions: (pc=0xb588c59f)
+0xb588c57f:   89 50 04 33 c9 89 48 08 89 48 0c be 00 00 00 00
+0xb588c58f:   e9 3d 01 00 00 ba 00 00 00 00 8b 4c 24 3c 90 90
+0xb588c59f:   e8 ac 2d 0e 00 81 c4 b8 00 00 00 5d 85 05 00 51
+0xb588c5af:   7d b7 c3 8b 4c 24 3c 90 e8 14 7a e5 ff be 00 00 
+
+Register to memory mapping:
+
+EAX=0x00000018 is an unknown value
+EBX=0x0000000e is an unknown value
+ECX=0x7bc3d5a0 is an oop
+org.joni.Analyser 
+ - klass: 'org/joni/Analyser'
+EDX=0x00000000 is an unknown value
+ESP=0xb46fa6b0 is pointing into the stack for thread: 0xb49f9c00
+EBP=0xb46fa7f8 is pointing into the stack for thread: 0xb49f9c00
+ESI=0x7bc3d640 is an oop
+org.joni.Token 
+ - klass: 'org/joni/Token'
+EDI=0x824335c8 is an oop
+[I 
+ - klass: {type array int}
+ - length: 24
+
+
+Stack: [0xb45ff000,0xb4700000],  sp=0xb46fa6b0,  free space=1005k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J  org.joni.Parser.parseExp(Lorg/joni/constants/TokenType;)Lorg/joni/ast/Node;
+j  org.joni.Parser.parseRegexp()Lorg/joni/ast/Node;+9
+j  org.joni.Parser.parse()Lorg/joni/ast/Node;+2
+j  org.joni.Analyser.compile()V+61
+j  org.joni.Regex.<init>([BIIIILorg/jcodings/Encoding;Lorg/joni/Syntax;Lorg/joni/WarnCallback;)V+108
+j  org.joni.Regex.<init>([BIIILorg/jcodings/Encoding;Lorg/joni/Syntax;Lorg/joni/WarnCallback;)V+14
+j  org.jruby.RubyRegexp.makeRegexp(Lorg/jruby/Ruby;Lorg/jruby/util/ByteList;Lorg/jruby/util/RegexpOptions;Lorg/jcodings/Encoding;)Lorg/joni/Regex;+35
+J  org.jruby.RubyRegexp.getRegexpFromCache(Lorg/jruby/Ruby;Lorg/jruby/util/ByteList;Lorg/jcodings/Encoding;Lorg/jruby/util/RegexpOptions;)Lorg/joni/Regex;
+j  org.jruby.parser.ParserSupport.newRegexpNode(Lorg/jruby/lexer/yacc/ISourcePosition;Lorg/jruby/ast/Node;Lorg/jruby/ast/RegexpNode;)Lorg/jruby/ast/Node;+112
+j  org.jruby.parser.DefaultRubyParser$277.execute(Lorg/jruby/parser/ParserSupport;Lorg/jruby/lexer/yacc/RubyYaccLexer;Ljava/lang/Object;[Ljava/lang/Object;I)Ljava/lang/Object;+35
+J  org.jruby.parser.DefaultRubyParser.yyparse(Lorg/jruby/lexer/yacc/RubyYaccLexer;)Ljava/lang/Object;
+j  org.jruby.parser.DefaultRubyParser.parse(Lorg/jruby/parser/ParserConfiguration;Lorg/jruby/lexer/yacc/LexerSource;)Lorg/jruby/parser/RubyParserResult;+102
+j  org.jruby.parser.Parser.parse(Ljava/lang/String;Lorg/jruby/lexer/yacc/LexerSource;Lorg/jruby/runtime/DynamicScope;Lorg/jruby/parser/ParserConfiguration;)Lorg/jruby/ast/Node;+50
+j  org.jruby.parser.Parser.parse(Ljava/lang/String;[BLorg/jruby/runtime/DynamicScope;Lorg/jruby/parser/ParserConfiguration;)Lorg/jruby/ast/Node;+31
+j  org.jruby.parser.Parser.parse(Ljava/lang/String;Ljava/io/InputStream;Lorg/jruby/runtime/DynamicScope;Lorg/jruby/parser/ParserConfiguration;)Lorg/jruby/ast/Node;+32
+j  org.jruby.Ruby.parseFile(Ljava/io/InputStream;Ljava/lang/String;Lorg/jruby/runtime/DynamicScope;I)Lorg/jruby/ast/Node;+38
+j  org.jruby.Ruby.parseFile(Ljava/io/InputStream;Ljava/lang/String;Lorg/jruby/runtime/DynamicScope;)Lorg/jruby/ast/Node;+5
+j  org.jruby.Ruby.loadFile(Ljava/lang/String;Ljava/io/InputStream;Z)V+57
+j  org.jruby.runtime.load.ExternalScript.load(Lorg/jruby/Ruby;Z)V+88
+j  org.jruby.runtime.load.LoadService.tryLoadingLibraryOrScript(Lorg/jruby/Ruby;Lorg/jruby/runtime/load/LoadService$SearchState;)Z+55
+j  org.jruby.runtime.load.LoadService.smartLoad(Ljava/lang/String;)Z+53
+j  org.jruby.runtime.load.LoadService.require(Ljava/lang/String;)Z+72
+j  org.jruby.runtime.load.LoadService.lockAndRequire(Ljava/lang/String;)Z+60
+j  org.jruby.RubyKernel.requireCommon(Lorg/jruby/Ruby;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+j  org.jruby.RubyKernel.require(Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+9
+j  org.jruby.RubyKernel$s$1$0$require.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+5
+j  org.jruby.internal.runtime.methods.JavaMethod$JavaMethodOneOrNBlock.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+11
+j  org.jruby.internal.runtime.methods.AliasMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+J  org.jruby.runtime.callsite.CachingCallSite.cacheAndCall(Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyClass;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lrubyjit/require_BFDB9D6137549CC22CA0E10941FA24A08C18265C;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+20
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+6
+J  org.jruby.internal.runtime.methods.JittedMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  org.jruby.evaluator.ASTInterpreter.INTERPRET_ROOT(Lorg/jruby/Ruby;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/ast/Node;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+25
+j  org.jruby.Ruby.runInterpreter(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/ast/Node;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+51
+j  org.jruby.Ruby.loadFile(Ljava/lang/String;Ljava/io/InputStream;Z)V+88
+j  org.jruby.runtime.load.ExternalScript.load(Lorg/jruby/Ruby;Z)V+88
+j  org.jruby.runtime.load.LoadService.tryLoadingLibraryOrScript(Lorg/jruby/Ruby;Lorg/jruby/runtime/load/LoadService$SearchState;)Z+55
+j  org.jruby.runtime.load.LoadService.smartLoad(Ljava/lang/String;)Z+53
+j  org.jruby.runtime.load.LoadService.require(Ljava/lang/String;)Z+72
+j  org.jruby.runtime.load.LoadService.lockAndRequire(Ljava/lang/String;)Z+60
+j  org.jruby.RubyKernel.requireCommon(Lorg/jruby/Ruby;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+j  org.jruby.RubyKernel.require(Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+9
+j  org.jruby.RubyKernel$s$1$0$require.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+5
+j  org.jruby.internal.runtime.methods.JavaMethod$JavaMethodOneOrNBlock.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+11
+j  org.jruby.internal.runtime.methods.AliasMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+J  org.jruby.runtime.callsite.CachingCallSite.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lrubyjit/require_BFDB9D6137549CC22CA0E10941FA24A08C18265C;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+20
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+6
+J  org.jruby.internal.runtime.methods.JittedMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  org.jruby.evaluator.ASTInterpreter.INTERPRET_ROOT(Lorg/jruby/Ruby;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/ast/Node;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+25
+j  org.jruby.Ruby.runInterpreter(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/ast/Node;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+51
+j  org.jruby.Ruby.loadFile(Ljava/lang/String;Ljava/io/InputStream;Z)V+88
+j  org.jruby.runtime.load.ExternalScript.load(Lorg/jruby/Ruby;Z)V+88
+j  org.jruby.runtime.load.LoadService.tryLoadingLibraryOrScript(Lorg/jruby/Ruby;Lorg/jruby/runtime/load/LoadService$SearchState;)Z+55
+j  org.jruby.runtime.load.LoadService.smartLoad(Ljava/lang/String;)Z+53
+j  org.jruby.runtime.load.LoadService.require(Ljava/lang/String;)Z+72
+j  org.jruby.runtime.load.LoadService.lockAndRequire(Ljava/lang/String;)Z+60
+j  org.jruby.RubyKernel.requireCommon(Lorg/jruby/Ruby;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+j  org.jruby.RubyKernel.require(Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+9
+j  org.jruby.RubyKernel$s$1$0$require.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+5
+j  org.jruby.internal.runtime.methods.JavaMethod$JavaMethodOneOrNBlock.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+11
+j  org.jruby.internal.runtime.methods.AliasMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+J  org.jruby.runtime.callsite.CachingCallSite.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lrubyjit/require_BFDB9D6137549CC22CA0E10941FA24A08C18265C;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+20
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+6
+J  org.jruby.internal.runtime.methods.JittedMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  org.jruby.evaluator.ASTInterpreter.INTERPRET_ROOT(Lorg/jruby/Ruby;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/ast/Node;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+25
+j  org.jruby.Ruby.runInterpreter(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/ast/Node;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+51
+j  org.jruby.Ruby.loadFile(Ljava/lang/String;Ljava/io/InputStream;Z)V+88
+j  org.jruby.runtime.load.ExternalScript.load(Lorg/jruby/Ruby;Z)V+88
+j  org.jruby.runtime.load.LoadService.tryLoadingLibraryOrScript(Lorg/jruby/Ruby;Lorg/jruby/runtime/load/LoadService$SearchState;)Z+55
+j  org.jruby.runtime.load.LoadService.smartLoad(Ljava/lang/String;)Z+53
+j  org.jruby.runtime.load.LoadService.require(Ljava/lang/String;)Z+72
+j  org.jruby.runtime.load.LoadService.lockAndRequire(Ljava/lang/String;)Z+60
+j  org.jruby.RubyKernel.requireCommon(Lorg/jruby/Ruby;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+j  org.jruby.RubyKernel.require(Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+9
+j  org.jruby.RubyKernel$s$1$0$require.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+5
+j  org.jruby.internal.runtime.methods.JavaMethod$JavaMethodOneOrNBlock.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+11
+j  org.jruby.internal.runtime.methods.AliasMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+J  org.jruby.runtime.callsite.CachingCallSite.cacheAndCall(Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyClass;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lrubyjit/require_BFDB9D6137549CC22CA0E10941FA24A08C18265C;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+20
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+6
+J  org.jruby.internal.runtime.methods.JittedMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  org.jruby.evaluator.ASTInterpreter.INTERPRET_ROOT(Lorg/jruby/Ruby;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/ast/Node;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+25
+j  org.jruby.Ruby.runInterpreter(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/ast/Node;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+51
+j  org.jruby.Ruby.loadFile(Ljava/lang/String;Ljava/io/InputStream;Z)V+88
+j  org.jruby.runtime.load.ExternalScript.load(Lorg/jruby/Ruby;Z)V+88
+j  org.jruby.runtime.load.LoadService.tryLoadingLibraryOrScript(Lorg/jruby/Ruby;Lorg/jruby/runtime/load/LoadService$SearchState;)Z+55
+j  org.jruby.runtime.load.LoadService.smartLoad(Ljava/lang/String;)Z+53
+j  org.jruby.runtime.load.LoadService.require(Ljava/lang/String;)Z+72
+j  org.jruby.runtime.load.LoadService.lockAndRequire(Ljava/lang/String;)Z+60
+j  org.jruby.RubyKernel.requireCommon(Lorg/jruby/Ruby;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+j  org.jruby.RubyKernel.require(Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+9
+j  org.jruby.RubyKernel$s$1$0$require.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+5
+j  org.jruby.internal.runtime.methods.JavaMethod$JavaMethodOneOrNBlock.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+11
+j  org.jruby.internal.runtime.methods.AliasMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;+13
+J  org.jruby.runtime.callsite.CachingCallSite.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lrubyjit/require_BFDB9D6137549CC22CA0E10941FA24A08C18265C;Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+20
+j  rubyjit.require_BFDB9D6137549CC22CA0E10941FA24A08C18265C.__file__(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/runtime/Block;)Lorg/jruby/runtime/builtin/IRubyObject;+6
+J  org.jruby.internal.runtime.methods.JittedMethod.call(Lorg/jruby/runtime/ThreadContext;Lorg/jruby/runtime/builtin/IRubyObject;Lorg/jruby/RubyModule;Ljava/lang/String;Lorg/jruby/runtime/builtin/IRubyObject;)Lorg/jruby/runtime/builtin/IRubyObject;
+...<more frames>...
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+=>0xb49f9c00 JavaThread "RubyThread-0: /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/redcar-0.13/lib/redcar.rb:183" daemon [_thread_in_Java, id=5196, stack(0xb45ff000,0xb4700000)]
+  0x09ec8000 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=5190, stack(0xb4b31000,0xb4c32000)]
+  0x09ec6400 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=5189, stack(0xb4c32000,0xb4cb3000)]
+  0x09ec4800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=5188, stack(0xb4cb3000,0xb4db4000)]
+  0x09ebd400 JavaThread "Finalizer" daemon [_thread_blocked, id=5187, stack(0xb4fb4000,0xb50b5000)]
+  0x09ebbc00 JavaThread "Reference Handler" daemon [_thread_blocked, id=5186, stack(0xb50b5000,0xb51b6000)]
+  0x09e4d400 JavaThread "main" [_thread_in_native, id=5184, stack(0xb76b7000,0xb77b8000)]
+
+Other Threads:
+  0x09eba000 VMThread [stack: 0xb51b6000,0xb5237000] [id=5185]
+  0x09ed4000 WatcherThread [stack: 0xb4ab0000,0xb4b31000] [id=5191]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 6528K, used 4346K [0x7b8b0000, 0x7bfc0000, 0x82350000)
+  eden space 5824K,  62% used [0x7b8b0000, 0x7bc3e8e0, 0x7be60000)
+  from space 704K, 100% used [0x7be60000, 0x7bf10000, 0x7bf10000)
+  to   space 704K,   0% used [0x7bf10000, 0x7bf10000, 0x7bfc0000)
+ tenured generation   total 14452K, used 9898K [0x82350000, 0x8316d000, 0x8f8b0000)
+   the space 14452K,  68% used [0x82350000, 0x82cfa9c8, 0x82cfaa00, 0x8316d000)
+ compacting perm gen  total 18176K, used 18055K [0x8f8b0000, 0x90a70000, 0x938b0000)
+   the space 18176K,  99% used [0x8f8b0000, 0x90a51c30, 0x90a51e00, 0x90a70000)
+    ro space 10240K,  73% used [0x938b0000, 0x940106b0, 0x94010800, 0x942b0000)
+    rw space 12288K,  60% used [0x942b0000, 0x949f9f80, 0x949fa000, 0x94eb0000)
+
+Code Cache  [0xb56b7000, 0xb5977000, 0xb76b7000)
+ total_blobs=1788 nmethods=1600 adapters=122 free_code_cache=30702336 largest_free_block=192
+
+Dynamic libraries:
+00110000-001ee000 r-xp 00000000 08:01 919076     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16
+001ee000-001ef000 ---p 000de000 08:01 919076     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16
+001ef000-001f3000 r--p 000de000 08:01 919076     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16
+001f3000-001f4000 rw-p 000e2000 08:01 919076     /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16
+001f4000-001fb000 rw-p 00000000 00:00 0 
+001fb000-00202000 r-xp 00000000 08:01 799557     /lib/i386-linux-gnu/librt-2.13.so
+00202000-00203000 r--p 00006000 08:01 799557     /lib/i386-linux-gnu/librt-2.13.so
+00203000-00204000 rw-p 00007000 08:01 799557     /lib/i386-linux-gnu/librt-2.13.so
+00204000-00206000 r-xp 00000000 08:01 921363     /usr/lib/i386-linux-gnu/libXcomposite.so.1.0.0
+00206000-00207000 r--p 00001000 08:01 921363     /usr/lib/i386-linux-gnu/libXcomposite.so.1.0.0
+00207000-00208000 rw-p 00002000 08:01 921363     /usr/lib/i386-linux-gnu/libXcomposite.so.1.0.0
+00208000-0020c000 r-xp 00000000 08:01 1076083    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/jli/libjli.so
+0020c000-0020d000 r--p 00003000 08:01 1076083    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/jli/libjli.so
+0020d000-0020e000 rw-p 00004000 08:01 1076083    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/jli/libjli.so
+0020e000-00386000 r-xp 00000000 08:01 786575     /lib/i386-linux-gnu/libc-2.13.so
+00386000-00388000 r--p 00178000 08:01 786575     /lib/i386-linux-gnu/libc-2.13.so
+00388000-00389000 rw-p 0017a000 08:01 786575     /lib/i386-linux-gnu/libc-2.13.so
+00389000-0038c000 rw-p 00000000 00:00 0 
+0038c000-003a8000 r-xp 00000000 08:01 787571     /lib/i386-linux-gnu/libgcc_s.so.1
+003a8000-003a9000 r--p 0001b000 08:01 787571     /lib/i386-linux-gnu/libgcc_s.so.1
+003a9000-003aa000 rw-p 0001c000 08:01 787571     /lib/i386-linux-gnu/libgcc_s.so.1
+003aa000-003b5000 r-xp 00000000 08:01 1080730    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libverify.so
+003b5000-003b6000 ---p 0000b000 08:01 1080730    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libverify.so
+003b6000-003b7000 r--p 0000b000 08:01 1080730    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libverify.so
+003b7000-003b8000 rw-p 0000c000 08:01 1080730    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libverify.so
+003b8000-003c0000 r-xp 00000000 08:01 786589     /lib/i386-linux-gnu/libnss_compat-2.13.so
+003c0000-003c1000 r--p 00007000 08:01 786589     /lib/i386-linux-gnu/libnss_compat-2.13.so
+003c1000-003c2000 rw-p 00008000 08:01 786589     /lib/i386-linux-gnu/libnss_compat-2.13.so
+003c2000-003d7000 r-xp 00000000 08:01 1080722    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnet.so
+003d7000-003d8000 r--p 00014000 08:01 1080722    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnet.so
+003d8000-003d9000 rw-p 00015000 08:01 1080722    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnet.so
+003d9000-003f0000 r-xp 00000000 08:01 921789     /usr/lib/i386-linux-gnu/libnssutil3.so
+003f0000-003f3000 r--p 00016000 08:01 921789     /usr/lib/i386-linux-gnu/libnssutil3.so
+003f3000-003f4000 rw-p 00019000 08:01 921789     /usr/lib/i386-linux-gnu/libnssutil3.so
+003f4000-003f8000 r-xp 00000000 08:01 921785     /usr/lib/i386-linux-gnu/libplc4.so
+003f8000-003f9000 r--p 00003000 08:01 921785     /usr/lib/i386-linux-gnu/libplc4.so
+003f9000-003fa000 rw-p 00004000 08:01 921785     /usr/lib/i386-linux-gnu/libplc4.so
+003fa000-003fd000 r-xp 00000000 08:01 921786     /usr/lib/i386-linux-gnu/libplds4.so
+003fd000-003fe000 r--p 00002000 08:01 921786     /usr/lib/i386-linux-gnu/libplds4.so
+003fe000-003ff000 rw-p 00003000 08:01 921786     /usr/lib/i386-linux-gnu/libplds4.so
+003ff000-00436000 r-xp 00000000 08:01 921784     /usr/lib/i386-linux-gnu/libnspr4.so
+00436000-00437000 ---p 00037000 08:01 921784     /usr/lib/i386-linux-gnu/libnspr4.so
+00437000-00438000 r--p 00037000 08:01 921784     /usr/lib/i386-linux-gnu/libnspr4.so
+00438000-00439000 rw-p 00038000 08:01 921784     /usr/lib/i386-linux-gnu/libnspr4.so
+00439000-0043b000 rw-p 00000000 00:00 0 
+0043b000-0047b000 r-xp 00000000 08:01 1051629    /usr/lib/i386-linux-gnu/nss/libsoftokn3.so
+0047b000-0047c000 r--p 0003f000 08:01 1051629    /usr/lib/i386-linux-gnu/nss/libsoftokn3.so
+0047c000-0047d000 rw-p 00040000 08:01 1051629    /usr/lib/i386-linux-gnu/nss/libsoftokn3.so
+0047d000-00480000 r-xp 00000000 08:01 1104576    /home/ashish/.swt/lib/linux/x86/libswt-gtk-3735.so
+00480000-00481000 rw-p 00002000 08:01 1104576    /home/ashish/.swt/lib/linux/x86/libswt-gtk-3735.so
+00481000-00482000 rw-p 00000000 00:00 0 
+00485000-00488000 r-xp 00000000 08:01 786585     /lib/i386-linux-gnu/libdl-2.13.so
+00488000-00489000 r--p 00002000 08:01 786585     /lib/i386-linux-gnu/libdl-2.13.so
+00489000-0048a000 rw-p 00003000 08:01 786585     /lib/i386-linux-gnu/libdl-2.13.so
+0048a000-0048e000 r-xp 00000000 08:01 919024     /usr/lib/i386-linux-gnu/libgthread-2.0.so.0.3000.0
+0048e000-0048f000 r--p 00003000 08:01 919024     /usr/lib/i386-linux-gnu/libgthread-2.0.so.0.3000.0
+0048f000-00490000 rw-p 00004000 08:01 919024     /usr/lib/i386-linux-gnu/libgthread-2.0.so.0.3000.0
+00490000-004ad000 r-xp 00000000 08:01 924439     /usr/lib/i386-linux-gnu/libatk-1.0.so.0.20209.1
+004ad000-004af000 r--p 0001c000 08:01 924439     /usr/lib/i386-linux-gnu/libatk-1.0.so.0.20209.1
+004af000-004b0000 rw-p 0001e000 08:01 924439     /usr/lib/i386-linux-gnu/libatk-1.0.so.0.20209.1
+004b0000-004c1000 r-xp 00000000 08:01 918616     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+004c1000-004c2000 r--p 00010000 08:01 918616     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+004c2000-004c3000 rw-p 00011000 08:01 918616     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+004c3000-004cc000 r-xp 00000000 08:01 920960     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+004cc000-004cd000 r--p 00008000 08:01 920960     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+004cd000-004ce000 rw-p 00009000 08:01 920960     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+004ce000-004d5000 r-xp 00000000 08:01 921375     /usr/lib/i386-linux-gnu/libXrandr.so.2.2.0
+004d5000-004d6000 r--p 00006000 08:01 921375     /usr/lib/i386-linux-gnu/libXrandr.so.2.2.0
+004d6000-004d7000 rw-p 00007000 08:01 921375     /usr/lib/i386-linux-gnu/libXrandr.so.2.2.0
+004d8000-00500000 r-xp 00000000 08:01 786586     /lib/i386-linux-gnu/libm-2.13.so
+00500000-00501000 r--p 00028000 08:01 786586     /lib/i386-linux-gnu/libm-2.13.so
+00501000-00502000 rw-p 00029000 08:01 786586     /lib/i386-linux-gnu/libm-2.13.so
+00502000-00504000 r-xp 00000000 08:01 921369     /usr/lib/i386-linux-gnu/libXdamage.so.1.1.0
+00504000-00505000 r--p 00001000 08:01 921369     /usr/lib/i386-linux-gnu/libXdamage.so.1.1.0
+00505000-00506000 rw-p 00002000 08:01 921369     /usr/lib/i386-linux-gnu/libXdamage.so.1.1.0
+00506000-00523000 r-xp 00000000 08:01 920954     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+00523000-00524000 r--p 0001c000 08:01 920954     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+00524000-00525000 rw-p 0001d000 08:01 920954     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+00525000-00527000 r-xp 00000000 08:01 920958     /usr/lib/i386-linux-gnu/libxcb-shm.so.0.0.0
+00527000-00528000 r--p 00001000 08:01 920958     /usr/lib/i386-linux-gnu/libxcb-shm.so.0.0.0
+00528000-00529000 rw-p 00002000 08:01 920958     /usr/lib/i386-linux-gnu/libxcb-shm.so.0.0.0
+00529000-00531000 r-xp 00000000 08:01 920956     /usr/lib/i386-linux-gnu/libxcb-render.so.0.0.0
+00531000-00532000 r--p 00007000 08:01 920956     /usr/lib/i386-linux-gnu/libxcb-render.so.0.0.0
+00532000-00533000 rw-p 00008000 08:01 920956     /usr/lib/i386-linux-gnu/libxcb-render.so.0.0.0
+00536000-00541000 r-xp 00000000 08:01 693307     /tmp/jffi7179698466906940820.tmp
+00541000-00542000 rw-p 0000a000 08:01 693307     /tmp/jffi7179698466906940820.tmp
+00542000-0056a000 r-xp 00000000 08:01 801345     /lib/i386-linux-gnu/libpng12.so.0.46.0
+0056a000-0056b000 r--p 00027000 08:01 801345     /lib/i386-linux-gnu/libpng12.so.0.46.0
+0056b000-0056c000 rw-p 00028000 08:01 801345     /lib/i386-linux-gnu/libpng12.so.0.46.0
+0056f000-0058d000 r-xp 00000000 08:01 786484     /lib/i386-linux-gnu/ld-2.13.so
+0058d000-0058e000 r--p 0001d000 08:01 786484     /lib/i386-linux-gnu/ld-2.13.so
+0058e000-0058f000 rw-p 0001e000 08:01 786484     /lib/i386-linux-gnu/ld-2.13.so
+0058f000-0062d000 r-xp 00000000 08:01 926251     /usr/lib/i386-linux-gnu/libsqlite3.so.0.8.6
+0062d000-0062e000 ---p 0009e000 08:01 926251     /usr/lib/i386-linux-gnu/libsqlite3.so.0.8.6
+0062e000-0062f000 r--p 0009e000 08:01 926251     /usr/lib/i386-linux-gnu/libsqlite3.so.0.8.6
+0062f000-00630000 rw-p 0009f000 08:01 926251     /usr/lib/i386-linux-gnu/libsqlite3.so.0.8.6
+00630000-00631000 rw-p 00000000 00:00 0 
+00631000-00644000 r-xp 00000000 08:01 799556     /lib/i386-linux-gnu/libresolv-2.13.so
+00644000-00645000 r--p 00012000 08:01 799556     /lib/i386-linux-gnu/libresolv-2.13.so
+00645000-00646000 rw-p 00013000 08:01 799556     /lib/i386-linux-gnu/libresolv-2.13.so
+00646000-00648000 rw-p 00000000 00:00 0 
+00649000-0065e000 r-xp 00000000 08:01 786588     /lib/i386-linux-gnu/libnsl-2.13.so
+0065e000-0065f000 r--p 00015000 08:01 786588     /lib/i386-linux-gnu/libnsl-2.13.so
+0065f000-00660000 rw-p 00016000 08:01 786588     /lib/i386-linux-gnu/libnsl-2.13.so
+00660000-00662000 rw-p 00000000 00:00 0 
+00662000-006b5000 r-xp 00000000 08:01 1051628    /usr/lib/i386-linux-gnu/nss/libfreebl3.so
+006b5000-006b6000 r--p 00052000 08:01 1051628    /usr/lib/i386-linux-gnu/nss/libfreebl3.so
+006b6000-006b7000 rw-p 00053000 08:01 1051628    /usr/lib/i386-linux-gnu/nss/libfreebl3.so
+006b7000-006bb000 rw-p 00000000 00:00 0 
+006bb000-00715000 r-xp 00000000 08:01 1104577    /home/ashish/.swt/lib/linux/x86/libswt-pi-gtk-3735.so
+00715000-00717000 rw-p 0005a000 08:01 1104577    /home/ashish/.swt/lib/linux/x86/libswt-pi-gtk-3735.so
+00717000-00718000 rw-p 00000000 00:00 0 
+00718000-0071d000 r-xp 00000000 08:01 918230     /usr/lib/i386-linux-gnu/libffi.so.6.0.0
+0071d000-0071e000 r--p 00004000 08:01 918230     /usr/lib/i386-linux-gnu/libffi.so.6.0.0
+0071e000-0071f000 rw-p 00005000 08:01 918230     /usr/lib/i386-linux-gnu/libffi.so.6.0.0
+0071f000-00721000 r-xp 00000000 08:01 920950     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00721000-00722000 r--p 00001000 08:01 920950     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00722000-00723000 rw-p 00002000 08:01 920950     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00723000-00728000 r-xp 00000000 08:01 920952     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+00728000-00729000 r--p 00004000 08:01 920952     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+00729000-0072a000 rw-p 00005000 08:01 920952     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+0072a000-00732000 r-xp 00000000 08:01 1080723    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnio.so
+00732000-00733000 r--p 00007000 08:01 1080723    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnio.so
+00733000-00734000 rw-p 00008000 08:01 1080723    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libnio.so
+00734000-007df000 r-xp 00000000 08:01 919860     /usr/lib/i386-linux-gnu/libgdk-x11-2.0.so.0.2400.6
+007df000-007e1000 r--p 000ab000 08:01 919860     /usr/lib/i386-linux-gnu/libgdk-x11-2.0.so.0.2400.6
+007e1000-007e2000 rw-p 000ad000 08:01 919860     /usr/lib/i386-linux-gnu/libgdk-x11-2.0.so.0.2400.6
+007e2000-007f0000 r-xp 00000000 08:01 922808     /usr/lib/liboverlay-scrollbar-0.2.so.0.0.11
+007f0000-007f1000 r--p 0000d000 08:01 922808     /usr/lib/liboverlay-scrollbar-0.2.so.0.0.11
+007f1000-007f2000 rw-p 0000e000 08:01 922808     /usr/lib/liboverlay-scrollbar-0.2.so.0.0.11
+007f2000-007f7000 r-xp 00000000 08:01 923635     /usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so
+007f7000-007f8000 r--p 00004000 08:01 923635     /usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so
+007f8000-007f9000 rw-p 00005000 08:01 923635     /usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so
+007fa000-0080d000 r-xp 00000000 08:01 787507     /lib/i386-linux-gnu/libz.so.1.2.3.4
+0080d000-0080e000 r--p 00012000 08:01 787507     /lib/i386-linux-gnu/libz.so.1.2.3.4
+0080e000-0080f000 rw-p 00013000 08:01 787507     /lib/i386-linux-gnu/libz.so.1.2.3.4
+0080f000-00841000 r-xp 00000000 08:01 918806     /usr/lib/i386-linux-gnu/libfontconfig.so.1.4.4
+00841000-00842000 ---p 00032000 08:01 918806     /usr/lib/i386-linux-gnu/libfontconfig.so.1.4.4
+00842000-00843000 r--p 00032000 08:01 918806     /usr/lib/i386-linux-gnu/libfontconfig.so.1.4.4
+00843000-00844000 rw-p 00033000 08:01 918806     /usr/lib/i386-linux-gnu/libfontconfig.so.1.4.4
+00849000-00860000 r-xp 00000000 08:01 799555     /lib/i386-linux-gnu/libpthread-2.13.so
+00860000-00861000 r--p 00016000 08:01 799555     /lib/i386-linux-gnu/libpthread-2.13.so
+00861000-00862000 rw-p 00017000 08:01 799555     /lib/i386-linux-gnu/libpthread-2.13.so
+00862000-00864000 rw-p 00000000 00:00 0 
+00864000-008ab000 r-xp 00000000 08:01 938132     /usr/lib/i386-linux-gnu/libpango-1.0.so.0.2903.0
+008ab000-008ac000 r--p 00047000 08:01 938132     /usr/lib/i386-linux-gnu/libpango-1.0.so.0.2903.0
+008ac000-008ad000 rw-p 00048000 08:01 938132     /usr/lib/i386-linux-gnu/libpango-1.0.so.0.2903.0
+008ad000-008c9000 r-xp 00000000 08:01 787435     /lib/i386-linux-gnu/libselinux.so.1
+008c9000-008ca000 r--p 0001b000 08:01 787435     /lib/i386-linux-gnu/libselinux.so.1
+008ca000-008cb000 rw-p 0001c000 08:01 787435     /lib/i386-linux-gnu/libselinux.so.1
+008cb000-008cf000 r-xp 00000000 08:01 924463     /usr/lib/libcanberra-gtk.so.0.1.8
+008cf000-008d0000 r--p 00003000 08:01 924463     /usr/lib/libcanberra-gtk.so.0.1.8
+008d0000-008d1000 rw-p 00004000 08:01 924463     /usr/lib/libcanberra-gtk.so.0.1.8
+008d1000-008e0000 r-xp 00000000 08:01 921357     /usr/lib/libcanberra.so.0.2.5
+008e0000-008e1000 r--p 0000e000 08:01 921357     /usr/lib/libcanberra.so.0.2.5
+008e1000-008e2000 rw-p 0000f000 08:01 921357     /usr/lib/libcanberra.so.0.2.5
+008e2000-008e8000 r-xp 00000000 08:01 921277     /usr/lib/i386-linux-gnu/libogg.so.0.7.1
+008e8000-008e9000 r--p 00005000 08:01 921277     /usr/lib/i386-linux-gnu/libogg.so.0.7.1
+008e9000-008ea000 rw-p 00006000 08:01 921277     /usr/lib/i386-linux-gnu/libogg.so.0.7.1
+008eb000-008f6000 r-xp 00000000 08:01 938133     /usr/lib/i386-linux-gnu/libpangocairo-1.0.so.0.2903.0
+008f6000-008f7000 r--p 0000a000 08:01 938133     /usr/lib/i386-linux-gnu/libpangocairo-1.0.so.0.2903.0
+008f7000-008f8000 rw-p 0000b000 08:01 938133     /usr/lib/i386-linux-gnu/libpangocairo-1.0.so.0.2903.0
+008f8000-0091e000 r-xp 00000000 08:01 787447     /lib/i386-linux-gnu/libexpat.so.1.5.2
+0091e000-0091f000 ---p 00026000 08:01 787447     /lib/i386-linux-gnu/libexpat.so.1.5.2
+0091f000-00921000 r--p 00026000 08:01 787447     /lib/i386-linux-gnu/libexpat.so.1.5.2
+00921000-00922000 rw-p 00028000 08:01 787447     /lib/i386-linux-gnu/libexpat.so.1.5.2
+00924000-00929000 r-xp 00000000 08:01 918753     /usr/lib/libXtst.so.6.1.0
+00929000-0092a000 r--p 00004000 08:01 918753     /usr/lib/libXtst.so.6.1.0
+0092a000-0092b000 rw-p 00005000 08:01 918753     /usr/lib/libXtst.so.6.1.0
+0092b000-00933000 r-xp 00000000 08:01 937442     /usr/lib/i386-linux-gnu/libvorbisfile.so.3.3.4
+00933000-00934000 r--p 00007000 08:01 937442     /usr/lib/i386-linux-gnu/libvorbisfile.so.3.3.4
+00934000-00935000 rw-p 00008000 08:01 937442     /usr/lib/i386-linux-gnu/libvorbisfile.so.3.3.4
+00935000-00946000 r-xp 00000000 08:01 921289     /usr/lib/i386-linux-gnu/libtdb.so.1.2.9
+00946000-00947000 r--p 00010000 08:01 921289     /usr/lib/i386-linux-gnu/libtdb.so.1.2.9
+00947000-00948000 rw-p 00011000 08:01 921289     /usr/lib/i386-linux-gnu/libtdb.so.1.2.9
+0094b000-0095a000 r-xp 00000000 08:01 1078611    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libj2pkcs11.so
+0095a000-0095b000 r--p 0000e000 08:01 1078611    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libj2pkcs11.so
+0095b000-0095c000 rw-p 0000f000 08:01 1078611    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libj2pkcs11.so
+0095c000-00a23000 r-xp 00000000 08:01 920962     /usr/lib/i386-linux-gnu/libcairo.so.2.11000.2
+00a23000-00a24000 r--p 000c7000 08:01 920962     /usr/lib/i386-linux-gnu/libcairo.so.2.11000.2
+00a24000-00a25000 rw-p 000c8000 08:01 920962     /usr/lib/i386-linux-gnu/libcairo.so.2.11000.2
+00a25000-00a27000 rw-p 00000000 00:00 0 
+00a27000-00a2f000 r-xp 00000000 08:01 923157     /usr/lib/libltdl.so.7.3.0
+00a2f000-00a30000 r--p 00008000 08:01 923157     /usr/lib/libltdl.so.7.3.0
+00a30000-00a31000 rw-p 00009000 08:01 923157     /usr/lib/libltdl.so.7.3.0
+00a3c000-00a5a000 r-xp 00000000 08:01 921126     /usr/lib/i386-linux-gnu/libgdk_pixbuf-2.0.so.0.2400.0
+00a5a000-00a5b000 r--p 0001d000 08:01 921126     /usr/lib/i386-linux-gnu/libgdk_pixbuf-2.0.so.0.2400.0
+00a5b000-00a5c000 rw-p 0001e000 08:01 921126     /usr/lib/i386-linux-gnu/libgdk_pixbuf-2.0.so.0.2400.0
+00a6d000-00a74000 r-xp 00000000 08:01 1080732    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libzip.so
+00a74000-00a75000 r--p 00006000 08:01 1080732    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libzip.so
+00a75000-00a76000 rw-p 00007000 08:01 1080732    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libzip.so
+00a7f000-00a89000 r-xp 00000000 08:01 799551     /lib/i386-linux-gnu/libnss_nis-2.13.so
+00a89000-00a8a000 r--p 00009000 08:01 799551     /lib/i386-linux-gnu/libnss_nis-2.13.so
+00a8a000-00a8b000 rw-p 0000a000 08:01 799551     /lib/i386-linux-gnu/libnss_nis-2.13.so
+00a8b000-00ad8000 r-xp 00000000 08:01 918997     /usr/lib/i386-linux-gnu/libgobject-2.0.so.0.3000.0
+00ad8000-00ad9000 r--p 0004d000 08:01 918997     /usr/lib/i386-linux-gnu/libgobject-2.0.so.0.3000.0
+00ad9000-00ada000 rw-p 0004e000 08:01 918997     /usr/lib/i386-linux-gnu/libgobject-2.0.so.0.3000.0
+00adc000-00ae7000 r-xp 00000000 08:01 786591     /lib/i386-linux-gnu/libnss_files-2.13.so
+00ae7000-00ae8000 r--p 0000a000 08:01 786591     /lib/i386-linux-gnu/libnss_files-2.13.so
+00ae8000-00ae9000 rw-p 0000b000 08:01 786591     /lib/i386-linux-gnu/libnss_files-2.13.so
+00af6000-00af8000 r-xp 00000000 08:01 921373     /usr/lib/i386-linux-gnu/libXinerama.so.1.0.0
+00af8000-00af9000 r--p 00001000 08:01 921373     /usr/lib/i386-linux-gnu/libXinerama.so.1.0.0
+00af9000-00afa000 rw-p 00002000 08:01 921373     /usr/lib/i386-linux-gnu/libXinerama.so.1.0.0
+00afa000-00b8c000 r-xp 00000000 08:01 919247     /usr/lib/i386-linux-gnu/libfreetype.so.6.6.2
+00b8c000-00b90000 r--p 00091000 08:01 919247     /usr/lib/i386-linux-gnu/libfreetype.so.6.6.2
+00b90000-00b91000 rw-p 00095000 08:01 919247     /usr/lib/i386-linux-gnu/libfreetype.so.6.6.2
+00b91000-00bba000 r-xp 00000000 08:01 921282     /usr/lib/i386-linux-gnu/libvorbis.so.0.4.5
+00bba000-00bbb000 r--p 00028000 08:01 921282     /usr/lib/i386-linux-gnu/libvorbis.so.0.4.5
+00bbb000-00bbc000 rw-p 00029000 08:01 921282     /usr/lib/i386-linux-gnu/libvorbis.so.0.4.5
+00bbf000-00be5000 r-xp 00000000 08:01 1078613    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libjava.so
+00be5000-00be6000 r--p 00025000 08:01 1078613    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libjava.so
+00be6000-00be8000 rw-p 00026000 08:01 1078613    /usr/lib/jvm/java-6-openjdk/jre/lib/i386/libjava.so
+00c20000-00c24000 r-xp 00000000 08:01 921365     /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+00c24000-00c25000 r--p 00003000 08:01 921365     /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+00c25000-00c26000 rw-p 00004000 08:01 921365     /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+00c29000-00c54000 r-xp 00000000 08:01 938134     /usr/lib/i386-linux-gnu/libpangoft2-1.0.so.0.2903.0
+00c54000-00c55000 r--p 0002a000 08:01 938134     /usr/lib/i386-linux-gnu/libpangoft2-1.0.so.0.2903.0
+00c55000-00c56000 rw-p 0002b000 08:01 938134     /usr/lib/i386-linux-gnu/libpangoft2-1.0.so.0.2903.0
+00c67000-00c70000 r-xp 00000000 08:01 921367     /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2
+00c70000-00c71000 r--p 00008000 08:01 921367     /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2
+00c71000-00c72000 rw-p 00009000 08:01 921367     /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2
+00caa000-00cb8000 r-xp 00000000 08:01 921371     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+00cb8000-00cb9000 r--p 0000d000 08:01 921371     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+00cb9000-00cba000 rw-p 0000e000 08:01 921371     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+00cbb000-00cbe000 r-xp 00000000 08:01 919019     /usr/lib/i386-linux-gnu/libgmodule-2.0.so.0.3000.0
+00cbe000-00cbf000 r--p 00002000 08:01 919019     /usr/lib/i386-linux-gnu/libgmodule-2.0.so.0.3000.0
+00cbf000-00cc0000 rw-p 00003000 08:01 919019     /usr/lib/i386-linux-gnu/libgmodule-2.0.so.0.3000.0
+00cc0000-00cfd000 r-xp 00000000 08:01 787486     /lib/i386-linux-gnu/libpcre.so.3.12.1
+00cfd000-00cfe000 r--p 0003c000 08:01 787486     /lib/i386-linux-gnu/libpcre.so.3.12.1
+00cfe000-00cff000 rw-p 0003d000 08:01 787486     /lib/i386-linux-gnu/libpcre.so.3.12.1
+00d1d000-00d1e000 r-xp 00000000 00:00 0          [vdso]
+00d1e000-01231000 r-xp 00000000 08:01 397978     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/client/libjvm.so
+01231000-01248000 r--p 00512000 08:01 397978     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/client/libjvm.so
+01248000-01255000 rw-p 00529000 08:01 397978     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/client/libjvm.so
+01255000-0166d000 rw-p 00000000 00:00 0 
+0166d000-01ace000 r-xp 00000000 08:01 919859     /usr/lib/i386-linux-gnu/libgtk-x11-2.0.so.0.2400.6
+01ace000-01ad2000 r--p 00461000 08:01 919859     /usr/lib/i386-linux-gnu/libgtk-x11-2.0.so.0.2400.6
+01ad2000-01ad4000 rw-p 00465000 08:01 919859     /usr/lib/i386-linux-gnu/libgtk-x11-2.0.so.0.2400.6
+01ad4000-01ad6000 rw-p 00000000 00:00 0 
+0200a000-02088000 r-xp 00000000 08:01 919833     /usr/lib/i386-linux-gnu/libpixman-1.so.0.22.2
+02088000-0208c000 r--p 0007d000 08:01 919833     /usr/lib/i386-linux-gnu/libpixman-1.so.0.22.2
+0208c000-0208d000 rw-p 00081000 08:01 919833     /usr/lib/i386-linux-gnu/libpixman-1.so.0.22.2
+037a4000-038e0000 r-xp 00000000 08:01 921791     /usr/lib/i386-linux-gnu/libnss3.so
+038e0000-038e3000 r--p 0013b000 08:01 921791     /usr/lib/i386-linux-gnu/libnss3.so
+038e3000-038e5000 rw-p 0013e000 08:01 921791     /usr/lib/i386-linux-gnu/libnss3.so
+04a50000-04b92000 r-xp 00000000 08:01 919114     /usr/lib/i386-linux-gnu/libgio-2.0.so.0.3000.0
+04b92000-04b94000 r--p 00142000 08:01 919114     /usr/lib/i386-linux-gnu/libgio-2.0.so.0.3000.0
+04b94000-04b95000 rw-p 00144000 08:01 919114     /usr/lib/i386-linux-gnu/libgio-2.0.so.0.3000.0
+04b95000-04b96000 rw-p 00000000 00:00 0 
+052af000-053e0000 r-xp 00000000 08:01 920948     /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+053e0000-053e1000 ---p 00131000 08:01 920948     /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+053e1000-053e2000 r--p 00131000 08:01 920948     /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+053e2000-053e4000 rw-p 00132000 08:01 920948     /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+053e4000-053e5000 rw-p 00000000 00:00 0 
+06826000-0691d000 r-xp 00000000 08:01 786634     /lib/i386-linux-gnu/libglib-2.0.so.0.3000.0
+0691d000-0691e000 r--p 000f6000 08:01 786634     /lib/i386-linux-gnu/libglib-2.0.so.0.3000.0
+0691e000-0691f000 rw-p 000f7000 08:01 786634     /lib/i386-linux-gnu/libglib-2.0.so.0.3000.0
+08048000-08051000 r-xp 00000000 08:01 1081337    /usr/lib/jvm/java-6-openjdk/jre/bin/java
+08051000-08052000 r--p 00008000 08:01 1081337    /usr/lib/jvm/java-6-openjdk/jre/bin/java
+08052000-08053000 rw-p 00009000 08:01 1081337    /usr/lib/jvm/java-6-openjdk/jre/bin/java
+09e46000-0a227000 rw-p 00000000 00:00 0          [heap]
+7b8b0000-7bfc0000 rw-p 00000000 00:00 0 
+7bfc0000-82350000 rw-p 00000000 00:00 0 
+82350000-8316d000 rw-p 00000000 00:00 0 
+8316d000-8f8b0000 rw-p 00000000 00:00 0 
+8f8b0000-90a70000 rw-p 00000000 00:00 0 
+90a70000-938b0000 rw-p 00000000 00:00 0 
+938b0000-94011000 r--s 00001000 08:01 397609     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/client/classes.jsa
+94011000-942b0000 rw-p 00000000 00:00 0 
+942b0000-949fa000 rw-p 00762000 08:01 397609     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/client/classes.jsa
+949fa000-94eb0000 rw-p 00000000 00:00 0 
+94eb0000-94fac000 rw-p 00eac000 08:01 397609     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/client/classes.jsa
+94fac000-952b0000 rw-p 00000000 00:00 0 
+952b0000-952b8000 r-xs 00fa8000 08:01 397609     /usr/lib/jvm/java-6-openjdk/jre/lib/i386/client/classes.jsa
+952b8000-956b0000 rw-p 00000000 00:00 0 
+b45ff000-b4602000 ---p 00000000 00:00 0 
+b4602000-b4700000 rw-p 00000000 00:00 0 
+b4700000-b47fe000 rw-p 00000000 00:00 0 
+b47fe000-b4800000 ---p 00000000 00:00 0 
+b4900000-b49fb000 rw-p 00000000 00:00 0 
+b49fb000-b4a00000 ---p 00000000 00:00 0 
+b4a3c000-b4a51000 r--s 00164000 08:01 311477     /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/swt-0.12/vendor/swt/swt-linux32.jar
+b4a51000-b4a55000 r--s 00038000 08:01 658400     /usr/lib/jvm/java-6-openjdk/jre/lib/ext/sunpkcs11.jar
+b4a55000-b4a58000 r--s 00031000 08:01 697278     /usr/lib/jvm/java-6-openjdk/jre/lib/ext/sunjce_provider.jar
+b4a58000-b4a5b000 r--s 0007d000 08:01 1063703    /usr/lib/jvm/java-6-openjdk/jre/lib/jsse.jar
+b4a5b000-b4a5d000 r--s 00013000 08:01 1063701    /usr/lib/jvm/java-6-openjdk/jre/lib/jce.jar
+b4a5d000-b4a64000 r--s 000fb000 08:01 1063711    /usr/lib/jvm/java-6-openjdk/jre/lib/resources.jar
+b4a64000-b4a6b000 r--s 0006e000 08:01 311276     /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/jruby-openssl-0.7.6.1/lib/shared/jopenssl.jar
+b4a6b000-b4a93000 r--s 00194000 08:01 311267     /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/bouncy-castle-java-1.5.0146.1/lib/bcprov-jdk15-146.jar
+b4a93000-b4a9e000 r--s 0006c000 08:01 311265     /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/bouncy-castle-java-1.5.0146.1/lib/bcmail-jdk15-146.jar
+b4a9e000-b4a9f000 r--s 00008000 08:01 447016     /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/redcar-0.13/vendor/json-1.6.4-java/lib/json/ext/generator.jar
+b4a9f000-b4aa1000 r--s 00006000 08:01 447017     /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/redcar-0.13/vendor/json-1.6.4-java/lib/json/ext/parser.jar
+b4aa1000-b4aa8000 r--s 00000000 08:01 932312     /usr/lib/i386-linux-gnu/gconv/gconv-modules.cache
+b4aa8000-b4ab0000 r--s 00066000 08:01 23220      /usr/share/java/gnome-java-bridge.jar
+b4ab0000-b4ab1000 ---p 00000000 00:00 0 
+b4ab1000-b4b31000 rw-p 00000000 00:00 0 
+b4b31000-b4b34000 ---p 00000000 00:00 0 
+b4b34000-b4c32000 rw-p 00000000 00:00 0 
+b4c32000-b4c35000 ---p 00000000 00:00 0 
+b4c35000-b4cb3000 rw-p 00000000 00:00 0 
+b4cb3000-b4cb6000 ---p 00000000 00:00 0 
+b4cb6000-b4db4000 rw-p 00000000 00:00 0 
+b4db4000-b4fb4000 r--p 00000000 08:01 925476     /usr/lib/locale/locale-archive
+b4fb4000-b4fb7000 ---p 00000000 00:00 0 
+b4fb7000-b50b5000 rw-p 00000000 00:00 0 
+b50b5000-b50b8000 ---p 00000000 00:00 0 
+b50b8000-b51b6000 rw-p 00000000 00:00 0 
+b51b6000-b51b7000 ---p 00000000 00:00 0 
+b51b7000-b5237000 rw-p 00000000 00:00 0 
+b5237000-b531c000 r--s 00bbe000 08:01 314521     /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/redcar-jruby-0.1/vendor/jruby-complete-1.6.4.jar
+b531c000-b534f000 rw-p 00000000 00:00 0 
+b534f000-b54df000 r--s 037ba000 08:01 1075250    /usr/lib/jvm/java-6-openjdk/jre/lib/rt.jar
+b54df000-b54e8000 rw-p 00000000 00:00 0 
+b54e8000-b5500000 rw-p 00000000 00:00 0 
+b5500000-b5508000 rw-p 00000000 00:00 0 
+b5508000-b556b000 rw-p 00000000 00:00 0 
+b556b000-b556f000 rw-p 00000000 00:00 0 
+b556f000-b55a0000 rw-p 00000000 00:00 0 
+b55a0000-b55a8000 rw-p 00000000 00:00 0 
+b55a8000-b560b000 rw-p 00000000 00:00 0 
+b560b000-b5614000 rw-p 00000000 00:00 0 
+b5614000-b562b000 rw-p 00000000 00:00 0 
+b562b000-b5642000 rw-p 00000000 00:00 0 
+b5642000-b56b7000 rw-p 00000000 00:00 0 
+b56b7000-b5977000 rwxp 00000000 00:00 0 
+b5977000-b76b7000 rw-p 00000000 00:00 0 
+b76b7000-b76ba000 ---p 00000000 00:00 0 
+b76ba000-b77bb000 rw-p 00000000 00:00 0 
+b77bc000-b77be000 r--s 0000f000 08:01 697280     /usr/lib/jvm/java-6-openjdk/jre/lib/ext/pulse-java.jar
+b77be000-b77bf000 r--p 002a1000 08:01 925476     /usr/lib/locale/locale-archive
+b77bf000-b77cc000 rw-p 00000000 00:00 0 
+b77cc000-b77d4000 rw-s 00000000 08:01 690215     /tmp/hsperfdata_ashish/5183
+b77d4000-b77d5000 rw-p 00000000 00:00 0 
+b77d5000-b77d6000 r--p 00000000 00:00 0 
+b77d6000-b77d8000 rw-p 00000000 00:00 0 
+bf850000-bf871000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Xbootclasspath/a:/home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/redcar-jruby-0.1/vendor/jruby-complete-1.6.4.jar -Dfile.encoding=UTF8 -Xmx320m -Xss1024k -Djruby.memory.max=320m -Djruby.stack.max=1024k 
+java_command: org.jruby.Main /home/ashish/.rvm/gems/ruby-1.9.3-p0/gems/redcar-0.13/bin/redcar --no-sub-jruby --ignore-stdin --start-time=1328110036 .
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/ashish/.rvm/gems/ruby-1.9.3-p0/bin:/home/ashish/.rvm/gems/ruby-1.9.3-p0@global/bin:/home/ashish/.rvm/rubies/ruby-1.9.3-p0/bin:/home/ashish/.rvm/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin
+USERNAME=ashish
+LD_LIBRARY_PATH=/usr/lib/jvm/java-6-openjdk/jre/lib/i386/client:/usr/lib/jvm/java-6-openjdk/jre/lib/i386:/usr/lib/jvm/java-6-openjdk/jre/../lib/i386
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x3e3640], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x3e3640], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x300e10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: SIG_IGN, sa_mask[0]=0x00001000, sa_flags=0x10000000
+SIGXFSZ: [libjvm.so+0x300e10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x300e10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x300ca0], sa_mask[0]=0x00000000, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x303d40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x303d40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x303d40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x303d40], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Ubuntu 11.10 (oneiric)
+uname:Linux 3.0.0-16-generic #29-Ubuntu SMP Tue Feb 14 12:49:42 UTC 2012 i686
+libc:glibc 2.13 NPTL 2.13 
+rlimit: STACK 8192k, CORE 0k, NPROC 7858, NOFILE 4096, AS infinity
+load average:0.55 0.39 0.54
+
+/proc/meminfo:
+MemTotal:        1025636 kB
+MemFree:          166148 kB
+Buffers:           56748 kB
+Cached:           403164 kB
+SwapCached:        15628 kB
+Active:           263044 kB
+Inactive:         443752 kB
+Active(anon):      86312 kB
+Inactive(anon):   222012 kB
+Active(file):     176732 kB
+Inactive(file):   221740 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:        139144 kB
+HighFree:           1832 kB
+LowTotal:         886492 kB
+LowFree:          164316 kB
+SwapTotal:       1046524 kB
+SwapFree:         981596 kB
+Dirty:             17716 kB
+Writeback:             0 kB
+AnonPages:        233484 kB
+Mapped:           104996 kB
+Shmem:             61412 kB
+Slab:              54708 kB
+SReclaimable:      41128 kB
+SUnreclaim:        13580 kB
+KernelStack:        2384 kB
+PageTables:         9016 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1559340 kB
+Committed_AS:    1656476 kB
+VmallocTotal:     122880 kB
+VmallocUsed:        6948 kB
+VmallocChunk:     110548 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       4096 kB
+DirectMap4k:       20472 kB
+DirectMap4M:      888832 kB
+
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 11, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
+
+Memory: 4k page, physical 1025636k(166024k free), swap 1046524k(981596k free)
+
+vm_info: OpenJDK Client VM (20.0-b11) for linux-x86 JRE (1.6.0_23-b23), built on Feb 23 2012 06:34:21 by "buildd" with gcc 4.6.1
+
+time: Wed Feb  1 20:57:23 2012
+elapsed time: 6 seconds
+

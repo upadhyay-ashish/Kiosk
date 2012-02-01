@@ -1,0 +1,11 @@
+<%= semantic_form_for @person do |f| %>
+  <%= f.semantic_errors %>
+  <%= f.inputs do %>
+    <%= f.input :name,   :hint => "Enter the name." , :required => 'true'%>
+    <%= f.input :city, :hint => "Enter the city." %>
+    <%= f.input :skill, :hint => "Enter the skill." %>
+  <% end %>
+  <%= f.buttons do %>
+    <%= f.commit_button :button_html => {:class => "primary"} %>
+  <% end %>
+<% end %>
